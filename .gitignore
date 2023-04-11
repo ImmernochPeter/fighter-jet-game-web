@@ -1,3 +1,10 @@
+# Editor settings
+.vscode
+
+# Secret Key
+
+secret.key
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
