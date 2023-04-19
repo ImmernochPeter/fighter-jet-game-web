@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "garage.apps.GarageConfig",
+    "home.apps.HomeConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
