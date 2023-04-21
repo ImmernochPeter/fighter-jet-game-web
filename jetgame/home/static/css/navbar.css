@@ -1,0 +1,51 @@
+.navbar-div {
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 10%;
+    position: absolute;
+    top: 0%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.navbar-a {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Roboto, Oxygen, Ubuntu,
+        Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 25%;
+}
+
+.navbar-div:hover {
+    box-shadow: 0px 12px 0px 0px rgba(44, 44, 99, 0.2);
+}
+
+.navbar-div-1 {
+    left: 10%;
+}
+
+.navbar-div-2 {
+    left: 20%;
+}
+
+.navbar-div-3 {
+    left: 30%;
+}
+
+.navbar-div-4 {
+    left: 40%;
+}
+
+.navbar {
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    height: 14%;
+    top: 0%;
+    left: 0%;
+}
