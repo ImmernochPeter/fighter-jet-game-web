@@ -1,1 +1,83 @@
-{{form.as_p}}
+{% extends "garage/index_garage.html" %}
+{% load static%}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/add-rocket.css' %}">
+<script src="{% static 'js/slider.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<noscript>
+    <div class="alert alert-error" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>It seems that you deactivated JavaScript in your browser. Thise site needs JavaScript to be loaded</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+</noscript>
+<div class="div-form">
+    <form action="">
+        <div class="card rocket-card" style="width: 50rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <label for="id_name">Name:</label>
+                    <br>
+                    <input type="text" name="name" maxlength="250" required="" id="id_name">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_max_speed">Maximum speed of the rocket:</label>
+                    <br>
+                    <div class="form-group">
+                        <input type="range" min="0" max="12" value="0" step="0.25"
+                            class="rocket-slider form-control-range" id="id_max_speed"
+                            oninput="wertDesSlidersInElementSchreiben('output-speed', 'id_max_speed')">
+                        <p>
+                            Mach <output id="output-speed">0</output>
+                        </p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <label for="id_max_g">Max g:</label>
+                    <br>
+                    <input type="number" name="max_g" step="any" required="" id="id_max_g">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_min_g">Min g:</label>
+                    <br>
+                    <input type="number" name="min_g" step="any" required="" id="id_min_g">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_max_back">Max back:</label>
+                    <br>
+                    <input type="number" name="max_back" step="any" required="" id="id_max_back">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_max_side">Max side:</label>
+                    <br>
+                    <input type="number" name="max_side" step="any" required="" id="id_max_side">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_max_front">Max front:</label>
+                    <br>
+                    <input type="number" name="max_front" step="any" required="" id="id_max_front">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_radar">Radar:</label>
+                    <br>
+                    <input type="checkbox" name="radar" required="" id="id_radar">
+                </li>
+                <li class="list-group-item">
+                    <label for="id_ir">Ir:</label>
+                    <br>
+                    <input type="checkbox" name="ir" required="" id="id_ir">
+                </li>
+            </ul>
+            <div class="card-footer">
+                <button type="button" class="btn btn-outline-success">Add</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+{% endblock %}
