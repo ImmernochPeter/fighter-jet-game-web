@@ -16,19 +16,21 @@
     </div>
 </noscript>
 <div class="div-form">
-    <form action="">
+    <form action="{% url 'add-air-to-air' %}" method="post">
+        {% csrf_token %}
         <div class="card rocket-card" style="width: 50rem;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <label for="id_name">Name:</label>
+                    <label for="id_name">Name of the missile:</label>
                     <br>
-                    <input type="text" name="name" maxlength="250" required="" id="id_name">
+                    <input class="form-control" name="name" type="text" placeholder="Name" id="id_name"
+                        aria-label="Name">
                 </li>
                 <li class="list-group-item">
-                    <label for="id_max_speed">Maximum speed of the rocket:</label>
+                    <label for="id_max_speed">Maximum speed of the missile:</label>
                     <br>
                     <div class="form-group">
-                        <input type="range" min="0" max="12" value="0" step="0.25"
+                        <input type="range" name="max_speed" min="0" max="12" value="0" step="0.25"
                             class="rocket-slider form-control-range" id="id_max_speed"
                             oninput="wertDesSlidersInElementSchreiben('output-speed', 'id_max_speed')">
                         <p>
@@ -37,43 +39,88 @@
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_max_g">Max g:</label>
+                    <label for="id_max_g">Maximum g resistance of the missile:</label>
                     <br>
-                    <input type="number" name="max_g" step="any" required="" id="id_max_g">
+                    <div class="form-group">
+                        <input type="range" name="max_g" min="0" max="25" value="0" step="0.5"
+                            class="rocket-slider form-control-range" id="id_max_g"
+                            oninput="wertDesSlidersInElementSchreiben('output-max-g', 'id_max_g')">
+                        <p>
+                            <output id="output-max-g">0</output> g
+                        </p>
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_min_g">Min g:</label>
+                    <label for="id_min_g">Maximum negative g resistance of the missile:</label>
                     <br>
-                    <input type="number" name="min_g" step="any" required="" id="id_min_g">
+                    <div class="form-group">
+                        <input type="range" name="min_g" min="0" max="25" value="0" step="0.5"
+                            class="rocket-slider form-control-range" id="id_min_g"
+                            oninput="wertDesSlidersInElementSchreiben('output-min-g', 'id_min_g')">
+                        <p>
+                            -<output id="output-min-g">0</output> g
+                        </p>
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_max_back">Max back:</label>
+                    <label for="id_max_back">Maxmium lock distance from back:</label>
                     <br>
-                    <input type="number" name="max_back" step="any" required="" id="id_max_back">
+                    <div class="form-group">
+                        <input type="range" name="max_back" min="0" max="50" value="0" step="1"
+                            class="rocket-slider form-control-range" id="id_max_back"
+                            oninput="wertDesSlidersInElementSchreiben('output-max-back', 'id_max_back')">
+                        <p>
+                            <output id="output-max-back">0</output> km
+                        </p>
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_max_side">Max side:</label>
+                    <label for="id_max_side">Maxmium lock distance from side:</label>
                     <br>
-                    <input type="number" name="max_side" step="any" required="" id="id_max_side">
+                    <div class="form-group">
+                        <input type="range" name="max_side" min="0" max="50" value="0" step="1"
+                            class="rocket-slider form-control-range" id="id_max_side"
+                            oninput="wertDesSlidersInElementSchreiben('output-max-side', 'id_max_side')">
+                        <p>
+                            <output id="output-max-side">0</output> km
+                        </p>
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_max_front">Max front:</label>
+                    <label for="id_max_front">Maxmium lock distance from front:</label>
                     <br>
-                    <input type="number" name="max_front" step="any" required="" id="id_max_front">
+                    <div class="form-group">
+                        <input type="range" name="max_front" min="0" max="50" value="0" step="1"
+                            class="rocket-slider form-control-range" id="id_max_front"
+                            oninput="wertDesSlidersInElementSchreiben('output-max-front', 'id_max_front')">
+                        <p>
+                            <output id="output-max-front">0</output> km
+                        </p>
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_radar">Radar:</label>
+                    <label for="id_radar">Automatic missile guiding system via radar:</label>
                     <br>
-                    <input type="checkbox" name="radar" required="" id="id_radar">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" name="radar" type="checkbox" role="switch" id="id_radar">
+                    </div>
+                    <div id="radar-switch" class="form-text">Note: Some aircrafts may not be attached by a radar guided
+                        missile
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <label for="id_ir">Ir:</label>
+                    <label for="id_ir">Automatic missile guiding system via IR:</label>
                     <br>
-                    <input type="checkbox" name="ir" required="" id="id_ir">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" name="ir" type="checkbox" role="switch" id="id_ir">
+                    </div>
+                    <div id="it-switch" class="form-text">Note: IR guided missiles may be distracted by any kind of
+                        heat sources
+                    </div>
                 </li>
             </ul>
             <div class="card-footer">
-                <button type="button" class="btn btn-outline-success">Add</button>
+                <button type="submit" class="btn btn-outline-success">Add</button>
             </div>
         </div>
 
